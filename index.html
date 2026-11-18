@@ -162,12 +162,12 @@
 
   /* GALLERY */
   #gallery{background:var(--bg-2)}
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+  .gallery{display:flex;flex-direction:column;gap:14px}
+  .g-row{display:flex;gap:14px}
+  .g-row .g{flex:var(--ar) 1 0;aspect-ratio:var(--ar)}
   .g{border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative;background:linear-gradient(135deg,#221314,#121010);display:grid;place-items:center;color:var(--muted);font-size:.8rem}
   .g img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
   .g:hover img{transform:scale(1.06)}
-  .g.big{grid-column:span 2;grid-row:span 2}
-  .g.wide{grid-column:span 2}
   .g .ph{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.6}
 
   /* FAQ */
@@ -232,7 +232,6 @@
     .coach-photo{max-width:460px}
     .programs,.prices{grid-template-columns:1fr 1fr}
     .foot{grid-template-columns:1fr 1fr}
-    .gallery{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:940px){
     .burger{display:block}
@@ -252,8 +251,8 @@
     .stats{gap:26px}
     .class-row{grid-template-columns:1fr;gap:6px;padding:18px}
     .class-row .pill{justify-self:start;margin-top:6px}
-    .gallery{grid-auto-rows:150px}
-    .g.big{grid-column:span 2;grid-row:span 2}
+    .g-row{flex-direction:column}
+    .g-row .g{flex:none;width:100%}
     .band{padding:44px 26px}
     .foot{grid-template-columns:1fr}
     form{padding:26px 20px}
@@ -494,10 +493,14 @@
       <p class="lead">More photos and reels on our <a href="https://www.facebook.com/ALEXYmuaythai/" target="_blank" rel="noopener" style="color:var(--gold)">Facebook page</a>.</p>
     </div>
     <div class="gallery reveal">
-      <div class="g big"><img src="img/team.jpg" alt="Members after training at the gym" loading="lazy" style="object-position:center 30%"></div>
-      <div class="g"><img src="img/corner.jpg" alt="Coach and fighter before a fight" loading="lazy"></div>
-      <div class="g"><img src="img/schedule.jpg" alt="ALEXY Team weekly training schedule" loading="lazy"></div>
-      <div class="g wide"><img src="img/cover-nicosia.jpg" alt="King of Kings fight night in Nicosia" loading="lazy"></div>
+      <div class="g-row">
+        <div class="g" style="--ar:0.8"><img src="img/team.jpg" alt="Members after training at the gym" loading="lazy"></div>
+        <div class="g" style="--ar:1"><img src="img/corner.jpg" alt="Coach and fighter before a fight" loading="lazy"></div>
+      </div>
+      <div class="g-row">
+        <div class="g" style="--ar:1.777"><img src="img/schedule.jpg" alt="ALEXY Team weekly training schedule" loading="lazy"></div>
+        <div class="g" style="--ar:1.777"><img src="img/cover-nicosia.jpg" alt="King of Kings fight night in Nicosia" loading="lazy"></div>
+      </div>
     </div>
   </div>
 </section>
